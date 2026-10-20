@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="Coraza House">
+  <rect width="32" height="32" rx="6" fill="#FFDE59"/>
+  <g fill="#161616">
+    <circle cx="8.5" cy="13" r="4.6"/>
+    <circle cx="16" cy="11.2" r="5.1"/>
+    <circle cx="23.5" cy="13" r="4.6"/>
+    <path d="M4.5 15.5h23v5.2c0 1.6-2.4 3.3-11.5 3.3S4.5 22.3 4.5 20.7z"/>
+    <rect x="4" y="20.2" width="24" height="3.6" rx="1.1"/>
+    <path d="M6.4 23.6h3.4l-.7 5.2H5.5zM22.2 23.6h3.4l.9 5.2h-3.6z"/>
+  </g>
+</svg>
