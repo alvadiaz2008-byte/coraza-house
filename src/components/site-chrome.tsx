@@ -28,11 +28,13 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-30 border-b border-ink/10 bg-gold">
       <div className="mx-auto flex max-w-6xl items-center gap-4 px-4 py-3 sm:px-6">
-        <Link to="/" search={{ cat: undefined, q: undefined }} className="min-w-0 shrink">
-          <span className="block font-display text-lg leading-none tracking-wide text-ink sm:text-xl">
-            CORAZA HOUSE
-          </span>
-          <span className="mt-1 block text-xs font-medium uppercase tracking-widest text-ink/70">
+        <Link to="/" search={{ cat: undefined, q: undefined }} className="flex min-w-0 shrink items-center gap-3">
+          <img
+            src="/logo-lockup.png"
+            alt="Coraza House"
+            className="h-20 w-auto sm:h-24"
+          />
+          <span className="hidden text-xs font-semibold uppercase tracking-widest text-ink/70 sm:block">
             Muebles · Villa El Salvador
           </span>
         </Link>
@@ -91,9 +93,9 @@ export function SiteFooter() {
     <footer className="mt-16 border-t border-line bg-paper">
       <div className="mx-auto grid max-w-6xl gap-8 px-4 py-10 sm:px-6 md:grid-cols-[1.4fr_1fr_1fr]">
         <div>
-          <p className="font-display text-2xl tracking-wide text-ink">CORAZA HOUSE SAC</p>
-          <p className="mt-2 max-w-sm text-sm leading-relaxed text-muted">
-            Fabricación y venta de muebles. RUC {STORE.ruc}. {STORE.shipping}.
+          <img src="/logo-lockup.png" alt="Coraza House" className="h-28 w-auto" />
+          <p className="mt-3 max-w-sm text-sm leading-relaxed text-muted">
+            Coraza House SAC. Fabricación y venta de muebles. RUC {STORE.ruc}. {STORE.shipping}.
           </p>
         </div>
         <div>

@@ -8,7 +8,7 @@
       name="description"
       content="Catálogo de Coraza House SAC: butacas Sirena, escritorio vintage, pack con silla y juegos de comedor. Villa El Salvador, Lima."
     />
-    <link rel="icon" href="public/favicon.svg" type="image/svg+xml" />
+    <link rel="icon" href="public/favicon-64.png" type="image/png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -46,9 +46,9 @@
         border-bottom: 1px solid rgb(22 22 22 / 0.1);
       }
       .bar { display: flex; align-items: center; gap: 16px; padding: 12px 0; }
-      .brand { text-decoration: none; }
-      .brand strong { display: block; font-family: "Archivo Black", sans-serif; font-size: 1.15rem; letter-spacing: 0.04em; }
-      .brand span { display: block; margin-top: 4px; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.7; }
+      .brand { display: flex; align-items: center; gap: 12px; text-decoration: none; min-width: 0; }
+      .brand img { height: 76px; width: auto; }
+      .brand span { display: none; font-size: 0.72rem; font-weight: 650; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.7; }
       nav { display: none; gap: 4px; margin-left: auto; }
       nav button, .chips button, .ghost, .solid, .gold {
         border: 0; background: transparent; font: inherit; color: inherit;
@@ -119,6 +119,8 @@
       .outline { border: 1px solid var(--ink); background: transparent; }
       .empty { border: 1px dashed var(--frame); background: var(--paper); border-radius: 20px; text-align: center; padding: 48px 16px; }
       @media (min-width: 800px) {
+        .brand img { height: 96px; }
+        .brand span { display: block; }
         nav { display: flex; }
         .chips { display: none; }
         .hero { grid-template-columns: 1.1fr 0.9fr; padding-top: 56px; }
@@ -138,7 +140,7 @@
     <header>
       <div class="wrap bar">
         <a class="brand" href="#catalogo">
-          <strong>CORAZA HOUSE</strong>
+          <img src="public/logo-lockup.png" alt="Coraza House" />
           <span>Muebles · Villa El Salvador</span>
         </a>
         <nav id="nav" aria-label="Categorías"></nav>
@@ -150,8 +152,8 @@
     <footer>
       <div class="wrap foot">
         <div>
-          <h2>CORAZA HOUSE SAC</h2>
-          <p>Fabricación y venta de muebles. RUC 20608147382. Envíos a Lima y provincias.</p>
+          <img src="public/logo-lockup.png" alt="Coraza House" style="height:104px;width:auto" />
+          <p>Coraza House SAC. Fabricación y venta de muebles. RUC 20608147382. Envíos a Lima y provincias.</p>
         </div>
         <div>
           <p class="kicker">Tienda</p>
