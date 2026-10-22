@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Coraza House · Muebles en Villa El Salvador</title>
+    <meta
+      name="description"
+      content="Catálogo de Coraza House SAC: butacas Sirena, escritorio vintage, pack con silla y juegos de comedor. Villa El Salvador, Lima."
+    />
+    <link rel="icon" href="public/favicon.svg" type="image/svg+xml" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Outfit:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --gold: #ffde59;
+        --cream: #fff6df;
+        --paper: #fffdf8;
+        --ink: #161616;
+        --muted: #5e584c;
+        --line: #eadfbe;
+        --frame: #e4d7b0;
+      }
+      * { box-sizing: border-box; }
+      html { -webkit-font-smoothing: antialiased; }
+      body {
+        margin: 0;
+        background: var(--cream);
+        color: var(--ink);
+        font-family: Outfit, ui-sans-serif, system-ui, sans-serif;
+        line-height: 1.5;
+      }
+      button, a { cursor: pointer; }
+      img { max-width: 100%; display: block; }
+      h1, h2, h3 { text-wrap: balance; font-family: "Archivo Black", "Arial Black", sans-serif; font-weight: 400; letter-spacing: 0.02em; line-height: 0.95; margin: 0; }
+      p { text-wrap: pretty; }
+      a { color: inherit; }
+      .wrap { width: min(1120px, calc(100% - 32px)); margin: 0 auto; }
+      header {
+        position: sticky; top: 0; z-index: 5;
+        background: var(--gold);
+        border-bottom: 1px solid rgb(22 22 22 / 0.1);
+      }
+      .bar { display: flex; align-items: center; gap: 16px; padding: 12px 0; }
+      .brand { text-decoration: none; }
+      .brand strong { display: block; font-family: "Archivo Black", sans-serif; font-size: 1.15rem; letter-spacing: 0.04em; }
+      .brand span { display: block; margin-top: 4px; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; opacity: 0.7; }
+      nav { display: none; gap: 4px; margin-left: auto; }
+      nav button, .chips button, .ghost, .solid, .gold {
+        border: 0; background: transparent; font: inherit; color: inherit;
+        min-height: 44px; border-radius: 999px; padding: 8px 14px; font-weight: 650; font-size: 0.92rem;
+      }
+      nav button.on, .chips button.on { background: var(--ink); color: var(--cream); }
+      .pedido {
+        margin-left: auto; text-decoration: none; background: var(--ink); color: var(--cream);
+        min-height: 44px; border-radius: 999px; padding: 8px 16px; font-weight: 700; display: inline-flex; align-items: center; gap: 8px;
+      }
+      nav + .pedido { margin-left: 8px; }
+      .count { background: var(--gold); color: var(--ink); border-radius: 999px; min-width: 1.4rem; text-align: center; font-size: 0.75rem; padding: 2px 6px; }
+      .chips { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 12px; }
+      .chips button { background: rgb(255 253 248 / 0.7); flex: none; }
+      .hero { display: grid; gap: 28px; padding: 40px 0 12px; align-items: center; }
+      .kicker { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); }
+      .hero h1 { font-size: clamp(2.1rem, 6vw, 3.6rem); margin-top: 10px; }
+      .lead { color: var(--muted); max-width: 38rem; }
+      .offers { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-top: 18px; max-width: 28rem; }
+      .offers div { background: var(--gold); border-radius: 16px; padding: 10px 12px; }
+      .offers dt { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; opacity: 0.7; }
+      .offers dd { margin: 0; font-family: "Archivo Black", sans-serif; font-size: 1.35rem; }
+      .shot { width: 100%; aspect-ratio: 3/4; object-fit: cover; border-radius: 20px; border: 1px solid var(--frame); background: var(--paper); }
+      .tools { display: flex; gap: 12px; align-items: center; padding: 18px 0; }
+      .tools input {
+        flex: 1; min-height: 48px; border-radius: 999px; border: 1px solid var(--frame);
+        background: var(--paper); padding: 0 18px; font: inherit; color: inherit;
+      }
+      .grid { display: grid; gap: 28px; padding-bottom: 28px; }
+      .card { text-decoration: none; display: block; }
+      .card p { margin: 12px 0 0; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); }
+      .card h2 { font-size: 1.45rem; margin-top: 4px; }
+      .price { font-family: "Archivo Black", sans-serif; margin-top: 6px; }
+      .visit { display: grid; gap: 18px; background: var(--ink); color: var(--cream); border-radius: 20px; padding: 24px; margin: 12px 0 28px; }
+      .visit .kicker { color: var(--gold); }
+      .visit h2 { font-size: clamp(1.6rem, 4vw, 2.2rem); margin-top: 8px; }
+      .flyers { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+      .flyers img { aspect-ratio: 3/4; object-fit: cover; object-position: top; border-radius: 16px; }
+      footer { border-top: 1px solid var(--line); background: var(--paper); margin-top: 24px; }
+      .foot { display: grid; gap: 22px; padding: 32px 0; }
+      .socials { display: flex; gap: 10px; }
+      .socials a { width: 44px; height: 44px; border-radius: 999px; background: var(--ink); color: var(--cream); display: grid; place-items: center; text-decoration: none; font-weight: 800; }
+      .back { color: var(--muted); font-weight: 700; text-decoration: none; }
+      .detail { display: grid; gap: 22px; padding: 28px 0 40px; }
+      .thumbs { display: flex; gap: 8px; margin-top: 10px; }
+      .thumbs button { width: 64px; height: 64px; padding: 0; border-radius: 12px; border: 2px solid transparent; overflow: hidden; background: none; }
+      .thumbs button.on { border-color: var(--ink); }
+      .thumbs img { width: 100%; height: 100%; object-fit: cover; }
+      .swatches { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+      .swatches a, .swatches span { min-height: 44px; border-radius: 999px; border: 1px solid var(--frame); background: var(--paper); padding: 8px 12px; text-decoration: none; font-weight: 700; display: inline-flex; align-items: center; gap: 8px; }
+      .swatches .on { background: var(--ink); color: var(--cream); border-color: var(--ink); }
+      .dot { width: 12px; height: 12px; border-radius: 999px; border: 1px solid rgb(22 22 22 / 0.2); }
+      .row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; margin-top: 22px; }
+      .qty { display: inline-flex; align-items: center; border: 1px solid var(--frame); background: var(--paper); border-radius: 999px; }
+      .qty button { width: 44px; height: 48px; border: 0; background: transparent; font-size: 1.2rem; }
+      .solid { background: var(--ink); color: var(--cream); }
+      .gold { background: var(--gold); }
+      .note { background: var(--gold); border-radius: 16px; padding: 12px 14px; font-weight: 600; }
+      ul.points { padding: 0; margin: 16px 0 0; list-style: none; }
+      ul.points li { display: flex; gap: 8px; margin: 6px 0; }
+      .line { display: flex; gap: 14px; padding: 14px 0; border-top: 1px solid var(--line); }
+      .line img { width: 88px; height: 88px; object-fit: cover; border-radius: 12px; border: 1px solid var(--frame); }
+      form.buyer { display: grid; gap: 12px; margin-top: 18px; }
+      label { font-weight: 700; font-size: 0.92rem; }
+      input, textarea { width: 100%; margin-top: 4px; border: 1px solid var(--frame); background: var(--paper); font: inherit; color: inherit; border-radius: 16px; padding: 12px 14px; }
+      .actions { display: flex; flex-wrap: wrap; gap: 8px; }
+      .actions a, .actions button { text-decoration: none; display: inline-flex; align-items: center; justify-content: center; min-height: 48px; border-radius: 999px; padding: 8px 16px; font-weight: 700; }
+      .outline { border: 1px solid var(--ink); background: transparent; }
+      .empty { border: 1px dashed var(--frame); background: var(--paper); border-radius: 20px; text-align: center; padding: 48px 16px; }
+      @media (min-width: 800px) {
+        nav { display: flex; }
+        .chips { display: none; }
+        .hero { grid-template-columns: 1.1fr 0.9fr; padding-top: 56px; }
+        .grid { grid-template-columns: repeat(3, 1fr); }
+        .visit { grid-template-columns: 1.2fr 0.8fr; align-items: center; }
+        .foot { grid-template-columns: 1.4fr 1fr 1fr; }
+        .detail { grid-template-columns: 1.05fr 0.95fr; align-items: start; }
+        form.buyer { grid-template-columns: 1fr 1fr; }
+        form.buyer .wide { grid-column: 1 / -1; }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        * { scroll-behavior: auto !important; transition: none !important; }
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <div class="wrap bar">
+        <a class="brand" href="#catalogo">
+          <strong>CORAZA HOUSE</strong>
+          <span>Muebles · Villa El Salvador</span>
+        </a>
+        <nav id="nav" aria-label="Categorías"></nav>
+        <a class="pedido" href="#pedido">Pedido <span class="count" id="count">0</span></a>
+      </div>
+      <div class="wrap chips" id="chips"></div>
+    </header>
+    <main class="wrap" id="app"></main>
+    <footer>
+      <div class="wrap foot">
+        <div>
+          <h2>CORAZA HOUSE SAC</h2>
+          <p>Fabricación y venta de muebles. RUC 20608147382. Envíos a Lima y provincias.</p>
+        </div>
+        <div>
+          <p class="kicker">Tienda</p>
+          <p>Galería Apemives, Av. Solidaridad Mz. F Lt. 12<br />Puerta 0 · Stand 8 y 5<br />Parque Industrial, Villa El Salvador, Lima</p>
+        </div>
+        <div>
+          <p class="kicker">Redes</p>
+          <div class="socials">
+            <a href="https://www.tiktok.com/@coraza.house.sac" target="_blank" rel="noreferrer">Tk</a>
+            <a href="https://www.instagram.com/corazahouse/" target="_blank" rel="noreferrer">Ig</a>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script>
+      const CATS = [
+        ["todos", "Todo"],
+        ["sillas", "Sillas"],
+        ["escritorios", "Escritorios"],
+        ["juegos", "Juegos de mesa"],
+        ["packs", "Packs"],
+      ];
+      const LABELS = Object.fromEntries(CATS);
+      const img = (path) => "public" + path;
+      const PRODUCTS = [
+        { slug: "butaca-sirena-fucsia", name: "Butaca Sirena Fucsia", category: "sillas", price: 350, family: "sirena", swatch: "#ff2f86", summary: "Butaca tapizada en forma de concha, con cojín y base giratoria. El fucsia es el color más pedido del mostrador.", points: ["Respaldo de pétalos tipo concha, en tela aterciopelada", "Cojín suelto a juego", "Base estrella con ruedas y pistón giratorio", "Misma butaca en otros colores, siempre a S/ 350"], images: [["/products/sirena-rosa-negra.jpg", "Butaca Sirena fucsia junto a la negra"], ["/products/sirena-fucsia.jpg", "Detalle de la butaca Sirena fucsia"], ["/products/sirena-showroom.jpg", "Mostrador con butacas Sirena"]] },
+        { slug: "butaca-sirena-negra", name: "Butaca Sirena Negra", category: "sillas", price: 350, family: "sirena", swatch: "#1a1a1a", summary: "La misma butaca concha, en negro. Sirve para tocador, escritorio o un rincón de maquillaje.", points: ["Tapiz negro con cojín incluido", "Gira y se regula con la base de ruedas", "Se ve en tienda junto al escritorio vintage", "Precio de oferta: S/ 350"], images: [["/products/sirena-negra.jpg", "Butaca Sirena negra con cojín"], ["/products/sirena-rosa-negra.jpg", "Butacas fucsia y negra"], ["/products/sirena-showroom.jpg", "Butaca negra en el mostrador"]] },
+        { slug: "butaca-sirena-beige", name: "Butaca Sirena Beige", category: "sillas", price: 350, family: "sirena", swatch: "#c6ae86", summary: "Versión arena de la butaca concha. El tono cálido combina con madera clara y melamina blanca.", points: ["Tela beige, respaldo de pétalos", "Cojín del mismo tono", "Base cromada con ruedas, según stock", "Oferta de productos seleccionados: S/ 350"], images: [["/products/sirena-beige.jpg", "Butaca Sirena beige"], ["/products/sirena-showroom.jpg", "Butacas Sirena en el local"]] },
+        { slug: "butaca-sirena-crema", name: "Butaca Sirena Crema", category: "sillas", price: 350, family: "sirena", swatch: "#efe6d6", summary: "Butaca concha en crema, la más clara de la línea. El cojín va anudado al centro del asiento.", points: ["Tapiz crema, casi marfil", "Cojín tipo lazo incluido", "Base estrella giratoria con ruedas", "S/ 350, igual que el resto de la línea Sirena"], images: [["/products/sirena-crema.jpg", "Butaca Sirena crema"], ["/products/sirena-showroom.jpg", "Línea Sirena en tienda"]] },
+        { slug: "butaca-sirena-rosa", name: "Butaca Sirena Rosa", category: "sillas", price: 350, family: "sirena", swatch: "#f3b6c4", summary: "Rosa pálido, con columna dorada. En tienda suele estar protegida con plástico hasta la entrega.", points: ["Tapiz rosa claro", "Columna y base con acabado dorado", "Ruedas negras y giro de 360°", "Oferta: S/ 350"], images: [["/products/sirena-rosa-envuelta.jpg", "Butaca Sirena rosa con base dorada"], ["/products/sirena-showroom.jpg", "Línea de butacas Sirena"]] },
+        { slug: "escritorio-vintage", name: "Escritorio Vintage con espejo", category: "escritorios", price: 650, family: "vintage", swatch: "#f4f1ea", summary: "Tocador blanco con espejo, repisas y cajonera. El precio de S/ 650 es el escritorio solo, sin silla.", points: ["Cubierta con cajón y bandeja de compartimentos", "Espejo abatible a la derecha", "Torre de repisas y cajonera de tres cajones", "Patas de madera", "Si lo quieres con silla, mira el pack a S/ 730"], images: [["/products/escritorio-solo.jpg", "Escritorio vintage blanco con espejo"], ["/products/escritorio-pack.jpg", "Escritorio con la silla del pack"]] },
+        { slug: "pack-escritorio-silla", name: "Pack escritorio y silla", category: "packs", price: 730, family: "vintage", swatch: "#d7c4a8", summary: "El escritorio vintage con espejo más la silla tapizada de patas de madera. Salen juntos a S/ 730.", points: ["Incluye el escritorio vintage completo", "Silla clara con patas de madera", "Precio de la oferta: S/ 730"], images: [["/products/escritorio-pack.jpg", "Pack de escritorio y silla"], ["/products/escritorio-solo.jpg", "Escritorio sin la silla"]] },
+        { slug: "juego-comedor-4", name: "Juego de comedor 4 sillas", category: "juegos", price: null, swatch: "#e7d3b0", referential: true, summary: "Mesa rectangular de madera clara con cuatro sillas tapizadas en crema. El modelo y el precio se confirman en tienda.", points: ["Mesa para cuatro puestos", "Sillas con asiento y respaldo tapizados", "Patas de madera", "Foto referencial. Confirma tela y medida antes de separar"], images: [["/products/comedor-4.jpg", "Juego de comedor para cuatro"]] },
+        { slug: "juego-comedor-6", name: "Juego de comedor 6 sillas", category: "juegos", price: null, swatch: "#2a211c", referential: true, summary: "Comedor de seis puestos: mesa de madera oscura y sillas negras tapizadas. Precio a consultar según stock.", points: ["Mesa rectangular para seis", "Sillas negras con patas de madera", "Foto referencial. El acabado se elige en el local"], images: [["/products/comedor-6.jpg", "Juego de comedor para seis"]] },
+      ];
+      const money = (n) => "S/ " + new Intl.NumberFormat("es-PE").format(n);
+      const priceOf = (p) => (p.price == null ? "A consultar" : money(p.price));
+      const find = (slug) => PRODUCTS.find((p) => p.slug === slug);
+      const state = JSON.parse(localStorage.getItem("coraza-pages") || '{"lines":[],"buyer":{"name":"","phone":"","district":"","note":""},"cat":"todos","q":""}');
+      const save = () => localStorage.setItem("coraza-pages", JSON.stringify(state));
+      const count = () => state.lines.reduce((s, l) => s + l.qty, 0);
+      const esc = (s) => String(s).replace(/[&<>"']/g, (c) => ({ "&": "&" + "amp;", "<": "&" + "lt;", ">": "&" + "gt;", '"': "&" + "quot;", "'": "&" + "#39;" })[c]);
+
+      function paintNav() {
+        const html = CATS.map(([id, label]) => `<button type="button" data-cat="${id}" class="${state.cat === id && location.hash !== "#pedido" ? "on" : ""}">${label}</button>`).join("");
+        document.getElementById("nav").innerHTML = html;
+        document.getElementById("chips").innerHTML = html;
+        document.getElementById("count").textContent = count();
+      }
+
+      function catalog() {
+        const q = state.q.trim().toLowerCase();
+        const list = PRODUCTS.filter((p) => (state.cat === "todos" || p.category === state.cat) && (!q || p.name.toLowerCase().includes(q) || LABELS[p.category].toLowerCase().includes(q)));
+        document.getElementById("app").innerHTML = `
+          <section class="hero">
+            <div>
+              <p class="kicker">Ofertas en productos seleccionados</p>
+              <h1>BUTACAS, ESCRITORIOS Y COMEDORES</h1>
+              <p class="lead">Coraza House muestra lo que está en el local de Villa El Salvador. Los precios del volante van tal cual.</p>
+              <dl class="offers"><div><dt>Butaca</dt><dd>S/ 350</dd></div><div><dt>Escritorio</dt><dd>S/ 650</dd></div><div><dt>Con silla</dt><dd>S/ 730</dd></div></dl>
+            </div>
+            <img class="shot" src="${img("/products/sirena-showroom.jpg")}" alt="Butacas Sirena en la tienda" />
+          </section>
+          <form class="tools" id="search">
+            <input id="q" value="${esc(state.q)}" placeholder="Busca butaca, escritorio, comedor…" aria-label="Buscar en el catálogo" />
+            <span>${list.length} muebles</span>
+          </form>
+          ${list.length ? `<section class="grid">${list.map((p) => `<a class="card" href="#${p.slug}"><img class="shot" src="${img(p.images[0][0])}" alt="${esc(p.images[0][1])}" /><p>${LABELS[p.category]}${p.referential ? " · foto referencial" : ""}</p><h2>${esc(p.name)}</h2><div class="price">${priceOf(p)}</div></a>`).join("")}</section>` : `<div class="empty"><h2>NADA CON ESE NOMBRE</h2><p>Prueba otra palabra o mira todo el catálogo.</p></div>`}
+          <section class="visit">
+            <div><p class="kicker">Dónde estamos</p><h2>PARQUE INDUSTRIAL, VILLA EL SALVADOR</h2><p>Galería Apemives, Av. Solidaridad Mz. F Lt. 12. Puerta 0 · Stand 8 y 5. Envíos a Lima y provincias.</p></div>
+            <div class="flyers">
+              <img src="${img("/products/flyer-sirena.jpg")}" alt="Volante de la Butaca Sirena a 350 soles" />
+              <img src="${img("/products/flyer-escritorio.jpg")}" alt="Volante del escritorio vintage" />
+            </div>
+          </section>`;
+        document.getElementById("q").addEventListener("input", (e) => { state.q = e.target.value.slice(0, 60); save(); catalog(); document.getElementById("q").focus(); });
+      }
+
+      function product(slug) {
+        const p = find(slug);
+        if (!p) return catalog();
+        const siblings = PRODUCTS.filter((x) => x.family && x.family === p.family);
+        document.getElementById("app").innerHTML = `
+          <article class="detail">
+            <div>
+              <img class="shot" id="hero" src="${img(p.images[0][0])}" alt="${esc(p.images[0][1])}" />
+              <div class="thumbs">${p.images.map((im, i) => `<button type="button" data-i="${i}" class="${i === 0 ? "on" : ""}"><img src="${img(im[0])}" alt="" /></button>`).join("")}</div>
+            </div>
+            <div>
+              <a class="back" href="#catalogo">← ${LABELS[p.category]}</a>
+              <p class="kicker" style="margin-top:14px">${LABELS[p.category]}</p>
+              <h1 style="font-size:clamp(2rem,5vw,3rem);margin-top:8px">${esc(p.name)}</h1>
+              <p class="price" style="font-size:1.8rem">${priceOf(p)}</p>
+              <p class="lead">${esc(p.summary)}</p>
+              ${p.referential ? `<p class="note">Foto referencial del estilo. Confirma modelo, tela y precio en la tienda antes de separar.</p>` : ""}
+              <ul class="points">${p.points.map((t) => `<li><span>•</span><span>${esc(t)}</span></li>`).join("")}</ul>
+              ${siblings.length > 1 ? `<div class="swatches">${siblings.map((s) => `<a class="${s.slug === p.slug ? "on" : ""}" href="#${s.slug}"><i class="dot" style="background:${s.swatch}"></i>${esc(s.name.replace("Butaca Sirena ", "").replace("Escritorio Vintage con espejo", "Solo").replace("Pack escritorio y silla", "Con silla"))}</a>`).join("")}</div>` : ""}
+              <div class="row">
+                <div class="qty"><button type="button" id="minus">−</button><span id="qty">1</span><button type="button" id="plus">+</button></div>
+                <button class="solid" type="button" id="add">Agregar al pedido</button>
+                <a href="#pedido">Ver pedido</a>
+              </div>
+            </div>
+          </article>`;
+        let qty = 1;
+        let photo = 0;
+        document.querySelectorAll(".thumbs button").forEach((b) => b.onclick = () => {
+          photo = Number(b.dataset.i);
+          document.getElementById("hero").src = img(p.images[photo][0]);
+          document.querySelectorAll(".thumbs button").forEach((x) => x.classList.toggle("on", x === b));
+        });
+        document.getElementById("minus").onclick = () => { qty = Math.max(1, qty - 1); document.getElementById("qty").textContent = qty; };
+        document.getElementById("plus").onclick = () => { qty = Math.min(20, qty + 1); document.getElementById("qty").textContent = qty; };
+        document.getElementById("add").onclick = () => {
+          const line = state.lines.find((l) => l.slug === p.slug);
+          if (line) line.qty = Math.min(20, line.qty + qty); else state.lines.push({ slug: p.slug, qty });
+          save(); paintNav();
+          document.getElementById("add").textContent = "Sumado al pedido";
+        };
+      }
+
+      function pedido() {
+        const rows = state.lines.map((l) => ({ l, p: find(l.slug) })).filter((r) => r.p);
+        const total = rows.reduce((s, r) => s + (r.p.price || 0) * r.l.qty, 0);
+        const b = state.buyer;
+        document.getElementById("app").innerHTML = rows.length ? `
+          <section style="padding:32px 0 48px">
+            <p class="kicker">Tu lista</p>
+            <h1 style="font-size:clamp(2.2rem,6vw,3.2rem);margin-top:8px">PEDIDO</h1>
+            <p class="lead">Arma la lista y cópiala para pegarla en Instagram o TikTok. No hay cobro en la web.</p>
+            ${rows.map(({ l, p }) => `<div class="line"><img src="${img(p.images[0][0])}" alt="" /><div style="flex:1"><a href="#${p.slug}"><strong>${esc(p.name)}</strong></a><div>${priceOf(p)}</div><div class="row"><button class="outline" type="button" data-d="${p.slug}">−</button><span>${l.qty}</span><button class="outline" type="button" data-u="${p.slug}">+</button><button type="button" data-x="${p.slug}">Quitar</button></div></div></div>`).join("")}
+            <p class="kicker" style="margin-top:18px">Total referencial</p>
+            <h2 style="font-size:2.4rem">${money(total)}</h2>
+            <form class="buyer" id="buyer">
+              <label>Nombre<input name="name" value="${esc(b.name)}" /></label>
+              <label>Celular<input name="phone" value="${esc(b.phone)}" /></label>
+              <label class="wide">Distrito de entrega<input name="district" value="${esc(b.district)}" /></label>
+              <label class="wide">Nota<textarea name="note" rows="3">${esc(b.note)}</textarea></label>
+              <div class="actions wide">
+                <button class="gold" type="submit" id="copy">Copiar pedido</button>
+                <a class="solid" href="https://www.instagram.com/corazahouse/" target="_blank" rel="noreferrer">Abrir Instagram</a>
+                <a class="outline" href="https://www.tiktok.com/@coraza.house.sac" target="_blank" rel="noreferrer">Abrir TikTok</a>
+              </div>
+            </form>
+          </section>` : `<div class="empty" style="margin:32px 0"><h2>TODAVÍA VACÍO</h2><p>Empieza por una butaca o por el escritorio vintage.</p><p><a class="solid" href="#catalogo">Ver catálogo</a></p></div>`;
+        document.querySelectorAll("[data-d]").forEach((b) => b.onclick = () => setQty(b.dataset.d, -1));
+        document.querySelectorAll("[data-u]").forEach((b) => b.onclick = () => setQty(b.dataset.u, 1));
+        document.querySelectorAll("[data-x]").forEach((b) => b.onclick = () => { state.lines = state.lines.filter((l) => l.slug !== b.dataset.x); save(); draw(); });
+        const form = document.getElementById("buyer");
+        if (form) form.onsubmit = (e) => { e.preventDefault(); new FormData(form).forEach((v, k) => { state.buyer[k] = String(v).slice(0, 280); }); save(); copyOrder(); document.getElementById("copy").textContent = "Pedido copiado"; };
+      }
+
+      function setQty(slug, delta) {
+        state.lines = state.lines.flatMap((l) => l.slug !== slug ? [l] : l.qty + delta > 0 ? [{ ...l, qty: Math.min(20, l.qty + delta) }] : []);
+        save(); draw();
+      }
+
+      function copyOrder() {
+        const lines = state.lines.map((l) => { const p = find(l.slug); return p ? `• ${l.qty} × ${p.name} — ${priceOf(p)}` : ""; }).filter(Boolean);
+        const total = state.lines.reduce((s, l) => s + ((find(l.slug)?.price) || 0) * l.qty, 0);
+        const b = state.buyer;
+        const text = [`Hola Coraza House, quiero consultar este pedido:`, "", ...lines, "", `Total referencial: ${money(total)}`, b.name && `Nombre: ${b.name}`, b.phone && `Celular: ${b.phone}`, b.district && `Distrito: ${b.district}`, b.note && `Nota: ${b.note}`].filter(Boolean).join("\n");
+        navigator.clipboard.writeText(text).catch(() => window.prompt("Copia el pedido:", text));
+      }
+
+      function draw() {
+        paintNav();
+        const hash = location.hash.replace("#", "");
+        if (hash === "pedido") pedido();
+        else if (find(hash)) product(hash);
+        else catalog();
+        window.scrollTo(0, 0);
+      }
+
+      document.body.addEventListener("click", (e) => {
+        const btn = e.target.closest("[data-cat]");
+        if (!btn) return;
+        state.cat = btn.dataset.cat;
+        state.q = "";
+        save();
+        if (location.hash !== "#catalogo") location.hash = "catalogo";
+        else draw();
+      });
+      window.addEventListener("hashchange", draw);
+      draw();
+    </script>
+  </body>
+</html>
